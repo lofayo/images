@@ -1,27 +1,26 @@
 class Stack {
     constructor() {
         this.dataSource = [];
-        this.top = -1;
+        this.top = 0;
     }
     push(element) {
-        this.dataSource[++this.top] = element;
-        return true;
+        this.dataSource[this.top++] = element;
     }
     pop() {
-        // 根本就不能这样，神经病！！！
-        this.top--;
+        if (this.top > 0) return this.dataSource[--this.top];
+        return 'empty stack';
     }
     peak() {
-        // 函数方法里该是return还是return，不能因为图打印方便就console.log，因为真正的函数调用是为了拿到值，而不仅仅是打印
-        return this.top > -1 ? this.dataSource[this.top] : 'empty stack';
+        if (this.top > 0) return this.dataSource[this.top - 1];
+        return 'empty stack';
     }
 }
 
 let stack = new Stack();
 stack.push('fofo');
 stack.push('lofayo');
-stack.pop();
-stack.pop();
-stack.pop();
+// stack.pop();
+// stack.pop();
+// stack.pop();
 
 console.log(stack, stack.peak());

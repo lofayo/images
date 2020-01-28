@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-01-17 08:04:23
- * @LastEditTime : 2020-01-19 08:50:38
+ * @LastEditTime : 2020-01-21 06:36:33
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /data-structure/4-linkList.js
@@ -76,7 +76,21 @@ class LinkList {
         if (!target) return false;
         const targetNode = this.find(target);
         if (!targetNode) return false;
-        const targetPrevNode = targetNode.prev;
+        let targetPrevNode = null;
+        let curNode = this.head;
+        let isFind = false;
+        while (curNode && curNode.next && !isFind) {
+            if (curNode.next.element !== target) {
+                curNode = curNode.next;
+            } else {
+                targetPrevNode = curNode;
+                isFind = true;
+            }
+        }
+        if (!targetPrevNode) return false;
+        const targetNextNode = targetNode.next;
+        targetPrevNode.next = targetNextNode;
+        return true;
     }
     /**
      * @description: show all node in the linkList
@@ -100,4 +114,6 @@ const linkList = new LinkList();
 linkList.add('lofayo');
 linkList.add('fofo');
 linkList.insert('fofo', 'luofangyong');
+linkList.delete('fofo');
+linkList.delete('luofangyong1');
 console.log(linkList, linkList.display())

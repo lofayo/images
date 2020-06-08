@@ -1,12 +1,14 @@
 /*
 * @Date: 2020-01-27 10:25:33
 * @Author: your name
- * @LastEditTime : 2020-01-27 12:10:09
- * @LastEditors  : Please set LastEditors
- * @Description: 集合定义：无序性，唯一性；相关操作：增删改查，集合自身的交集，并集，补集
+ * @LastEditTime: 2020-04-11 16:44:45
+ * @LastEditors: Please set LastEditors
+ * @Description: 
+ * 集合定义：无序性，唯一性；
+ * 元素操作：元素是否在集合内；集合元素的增删改查
+ * 集合间的运算：交集，并集，补集；
  * @FilePath: /data-structure/6-set.js
  */
-
 
 class Set {
     constructor() {

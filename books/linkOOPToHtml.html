@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="counter">
+        <p>0</p>
+        <button>add</button>
+    </div>
+    <script type="module">
+        class Counter {
+            // 传入dom节点，后续操作都在类的实例中实现
+            constructor(counter) {
+                this.counterDom = counter.querySelector('p');
+                this.counterValue = parseInt(this.counterDom.textContent);
+                this.addCounterBtn = counter.querySelector('button');
+                this.addCounterBtn.addEventListener('click', this.addCounter);
+            }
+            addCounter = ()=> {
+                this.counterValue += 1;
+                this.updateCounterDom();
+            }
+            updateCounterDom = () => {
+                this.counterDom.textContent = this.counterValue;
+            }
+        }
+        const counterDom = document.querySelector('.counter');
+        const counter = new Counter(counterDom);
+        console.log(counter);
+    </script>
+</body>
+</html>

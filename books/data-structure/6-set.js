@@ -1,7 +1,7 @@
 /*
 * @Date: 2020-01-27 10:25:33
 * @Author: your name
- * @LastEditTime: 2020-04-11 16:44:45
+ * @LastEditTime: 2021-03-05 17:48:59
  * @LastEditors: Please set LastEditors
  * @Description: 
  * 集合定义：无序性，唯一性；
@@ -130,3 +130,4 @@ console.log(set.intersect(set1));
 console.log(set.union(set1));
 console.log(set.complement(set1));
 console.log(set, set.show());
+

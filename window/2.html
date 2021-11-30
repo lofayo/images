@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>data-binding-method-set</title>
+</head>
+<body>
+    <span id="btn">按钮</span>
+    <script>
+      btn.addEventListener('click', function(){
+          window.close();
+          window.opener.focus();
+      })
+    </script>
+</body>
+</html>

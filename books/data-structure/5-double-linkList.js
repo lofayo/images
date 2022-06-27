@@ -3,8 +3,7 @@
  * @Date: 2020-01-21 06:40:00
  * @LastEditTime : 2020-01-21 07:26:22
  * @LastEditors  : Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /data-structure/5-double-linkList.js
+ * @Description: 双向链表还是很好使用，而且这些是基础类方法，得写的更优才好。
  */
 
 // 因为是双向链表，所以每个节点都会有两个属性
@@ -84,12 +83,8 @@ class DLinkList {
      */
     delete(target) {
         if (!target) return false;
-        let curNode = this.head;
-        while (curNode && curNode.element !== target) {
-            curNode = curNode.next;
-        }
-        if (!curNode) return false;
-        let targetNode = curNode;
+        let targetNode = this.find(target);
+        if(!targetNode) return false;
         targetNode.prev.next = targetNode.next;
         targetNode.next.prev = targetNode.prev;
         return targetNode;

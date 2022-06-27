@@ -104,40 +104,31 @@ const loopTree = (tree) => {
 // js即使是单线程，针对树的搜索也是深度优先的。其实它是每次要让代码从上到下依次执行完成才行
 
 // 深度优先查找树节点
-const findNodeByIdWithDeep = (() => {
-    let isFinded = false;
-    let target = null;
-    return (tree, id) => {
-        for(let item of tree) {
-            if(isFinded) return;
-            const {key, children} = item;
-            console.log(key);
-            if(key === id) {
-                isFinded = true;
-                target = item;
-                return console.log(item);
-            }
-            findNodeByIdWithDeep(children, id);
+const findNodeByIdWithDeep = (tree, id) => {
+    for(let item of tree) {
+        const {key, children} = item;
+        // 这里的log，可以确定循环遍历找到后是否断掉
+        console.log(key);
+        if(key === id) {
+            return console.log(item);
         }
-        if(isFinded) {
-            return console.log(target);
-        }
+        // 其实你会想到，深层次循环遍历，若是找到，得要断掉循环
+        return findNodeByIdWithDeep(children, id);
     }
-})();
+}
 
 // 广度优先查找树节点
 const findNodeByIdWithWidth = (tree, id) => {
     const childrens = [];
     for(let item of tree) {
         const {key, children} = item;
+        // 这里的log，可以确定循环遍历找到后是否断掉
         console.log(key);
         if(key === id) return console.log(item);
         childrens.push(...children);
     }
     if(childrens.length) {
         return findNodeByIdWithWidth(childrens, id);
-    } else {
-        return console.log('not exists');
     }
 }
 

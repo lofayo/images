@@ -2,9 +2,9 @@
  * @Author: your name
  * @Date: 2020-01-17 08:04:23
  * @LastEditTime : 2020-01-21 06:36:33
- * @LastEditors  : Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /data-structure/4-linkList.js
+ * @Description: 
+ * 1、链表相比于数组而存在，优势在于插入和移除元素时，在遍历时不如数组；
+ * 2、单向列表在删除元素时显得别扭，因为还要找到它的前一个元素，所以后面才有双向链表，直接一个属性关联着；
  */
 class Node {
     constructor(element) {
@@ -78,13 +78,11 @@ class LinkList {
         if (!targetNode) return false;
         let targetPrevNode = null;
         let curNode = this.head;
-        let isFind = false;
-        while (curNode && curNode.next && !isFind) {
+        while (curNode && curNode.next && !targetPrevNode) {
             if (curNode.next.element !== target) {
                 curNode = curNode.next;
             } else {
                 targetPrevNode = curNode;
-                isFind = true;
             }
         }
         if (!targetPrevNode) return false;
